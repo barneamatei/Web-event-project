@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- specifica tipul documentului HTML si seteaza limba la engleza; adauga namespace-ul Thymeleaf pentru a utiliza functionalitatile acestuia -->
+
+<head th:replace="~{fragments :: head}"></head>
+
+<body>
+<div th:replace="~{fragments :: header}"></div>
+
+<div class="body">
+    <h1>Create Event Category</h1>
+
+    <nav th:replace="fragments :: events_nav"></nav>
+
+    <form method="post" th:action="@{/eventCategories/create}" th:object="${eventCategory}">
+
+        <label for="name">Category Name:</label>
+
+        <input type="text" id="name" th:field="*{name}" placeholder="Enter Category Name">
+
+        <p class="error" th:errors="*{name}"></p>
+
+        <input type="submit" value="Create Category">
+    </form>
+</div>
+
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+
+</html>

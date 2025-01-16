@@ -16,6 +16,8 @@ public interface UserService {
 
     UserDto getUserById(Integer id);
 
+    User findUserById(Integer id);
+
     List<UserDto> getAllUsers();
 
     UserDto createUser(User user);
@@ -23,4 +25,7 @@ public interface UserService {
     UserDto updateUser(User user);
 
     void deleteUser(User user);
+
+    public User mapDtoToUser(UserDto userDto);
+
 }

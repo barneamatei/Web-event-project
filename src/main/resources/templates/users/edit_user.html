@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head}"></head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+
+<div class="body">
+    <h1>Edit User</h1>
+    <form th:action="@{/users/update}" th:method="post">
+        <input type="hidden" th:name="id" th:value="${user.id}" />
+        <label for="username">Username:</label>
+        <input type="text" id="username" th:name="username" th:value="${user.username}" required/>
+
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" th:name="firstName" th:value="${user.firstName}" required/>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" th:name="lastName" th:value="${user.lastName}" required/>
+
+        <label for="emailAddress">E-mail Address:</label>
+        <input type="email" id="emailAddress" th:name="emailAddress" th:value="${user.emailAddress}" required/>
+
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>

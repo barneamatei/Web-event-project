@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head}"></head>
+
+<div th:replace="~{fragments :: header}"></div>
+
+<div class="body">
+    <h1>Create Tag</h1>
+    <nav th:replace="fragments :: events_nav"></nav>
+    
+    <form method="post" th:action="@{/tags/create}" th:object="${tag}">
+        <label for="name">Tag Name:</label>
+        <input type="text" id="name" th:field="*{name}" placeholder="Enter Tag Name">
+        <p class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        <input type="submit" value="Create Tag">
+    </form>
+    
+    <a th:href="@{/tags}">Back to All Tags</a>
+</div>
+
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+
+</html>

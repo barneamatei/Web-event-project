@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -46,10 +47,6 @@ public class UserServiceImpl implements UserService{
                 .emailAddress(registrationRequest.getEmailAddress())
                 .role((roleRepository.findByRole("USER")))
                 .build();
-
-
-
-
         return this.createUser(user);
     }
 
@@ -61,6 +58,10 @@ public class UserServiceImpl implements UserService{
         return userMapper.userEntityToDto(userRepository.findById(id).orElse(null));
     }
 
+    public User findUserById(Integer id){
+        return userRepository.findById(id).orElse(null);
+    }
+
     public List<UserDto> getAllUsers(){
         return userMapper.userListEntityToDto(userRepository.findAll());
     }
@@ -69,12 +70,39 @@ public class UserServiceImpl implements UserService{
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userMapper.userEntityToDto(userRepository.save(user));
     }
+    public UserDto updateUser(User user) {
+        User existingUser = userRepository.findById(user.getId())
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
-    public UserDto updateUser(User user){
-        return userMapper.userEntityToDto(userRepository.save(user));
+        existingUser.setUsername(user.getUsername());
+        existingUser.setFirstName(user.getFirstName());
+        existingUser.setLastName(user.getLastName());
+        existingUser.setEmailAddress(user.getEmailAddress());
+
+        if (user.getRoles() == null || user.getRoles().isEmpty()) {
+            Role userRole = roleRepository.findByRole("USER");
+            existingUser.setRoles(new ArrayList<>(List.of(userRole)));
+        } else {
+            existingUser.setRoles(new ArrayList<>(user.getRoles()));
+        }
+        User savedUser = userRepository.save(existingUser);
+
+        return userMapper.userEntityToDto(savedUser);
     }
 
     public void deleteUser(User user){
         userRepository.delete(user);
     }
+
+    public User mapDtoToUser(UserDto userDto) {
+        User user = new User();
+        user.setId(userDto.id());
+        user.setUsername(userDto.username());
+        user.setFirstName(userDto.firstName());
+        user.setLastName(userDto.lastName());
+        user.setEmailAddress(userDto.emailAddress());
+        return user;
+    }
+
+
 }

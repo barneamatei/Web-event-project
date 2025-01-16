@@ -19,6 +19,7 @@ public class UserMapper {
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .emailAddress(user.getEmailAddress())
+                .id(user.getId())
                 .build();
     }
 
@@ -36,6 +37,7 @@ public class UserMapper {
                 .firstName(userDto.firstName())
                 .lastName(userDto.lastName())
                 .emailAddress(userDto.emailAddress())
+                .id(userDto.id())
                 .build();
     }
 

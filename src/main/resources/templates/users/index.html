@@ -8,8 +8,11 @@
 <body>
 <div th:replace="~{fragments :: header}"></div>
 
+
+
 <div class="body">
     <h1>Users</h1>
+    <nav th:replace="fragments :: users_nav"></nav>
     <div th:replace="~{fragments :: users_table}"></div>
 </div>
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- Doctype și namespace Thymeleaf -->
+
+<head th:replace="~{fragments :: head}"></head>
+
+<body>
+<div th:replace="~{fragments :: header}"></div>
+
+<div class="body">
+    <h1>All Events</h1>
+    <!-- Titrează pagina: "All Events" -->
+    
+    <nav th:replace="fragments :: events_nav"></nav>
+
+    <p th:unless="${events} and ${events.size()}">No events!</p>
+
+    <ul>
+        <li th:each="event : ${events}">
+            <a th:text="${event.name}"
+               th:href="@{/events/detail(eventId=${event.id})}"></a>
+        </li>
+    </ul>
+</div>
+
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+
+
+</html>

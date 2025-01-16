@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 @Builder
 public record UserDto(
+        Integer id,
         String username,
         List<RoleDto> roles,
         String firstName,

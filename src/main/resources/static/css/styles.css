@@ -42,3 +42,32 @@ th, td{
 .test {
 	background-color: blue;
 }
+
+/* Default styling for all rows */
+.table tr {
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Dynamic styling for specific categories */
+.category-1 {
+    background-color: #ffcccc; /* Light red */
+}
+
+.category-2 {
+    background-color: #ccffcc; /* Light green */
+}
+
+.category-3 {
+    background-color: #ccccff; /* Light blue */
+}
+
+/* Add hover effect */
+.table tr:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+}
+
+.nav-item{
+    margin-left: 10px;
+}

@@ -6,7 +6,13 @@
 <head th:replace="~{fragments :: head}"></head>
 
 <body>
-<div class="header" th:replace="~{fragments :: header}"></div>
-<h2 class="error">Server error!</h2>
+<div th:replace="~{fragments :: header}"></div>
+
+<div class="body">
+    <h1>Events</h1>
+    <div th:replace="~{fragments :: events_nav}"></div>
+</div>
+
+<div th:replace="~{fragments :: footer}"></div>
 </body>
 </html>
