@@ -1,25 +1,26 @@
-# SpringBootRenderExample
+# Event Management System
 
+This web-based application is built using Java with Spring Boot and follows a structured MVC architecture. Designed for event organizers, the system allows efficient management of events, attendees, and schedules. The platform ensures seamless organization and tracking of events through an intuitive web interface.
 
-### Remember, first create the database locally ticket_store, then run the app such that the tables are created (roles, users, users_roles)
+## Key Features:
 
-### Then Execute the sql statements
+- **Responsive Web Interface:** Developed with HTML, CSS, and Thymeleaf for a smooth user experience.
+- **Spring Boot Backend:** Ensures robust performance and security.
+- **MySQL Database Integration:** Reliable data storage and retrieval.
+- **CRUD Operations:** Manage events, attendees, and schedules efficiently.
+- **Authentication & Security:** Secure user authentication and role-based access.
+- **MVC Architecture:** Clear separation between the UI, business logic, and database.
+- **Bootstrap Integration:** Enhanced UI styling and responsiveness.
+- **Automated Database Migration:** Uses Flyway/Liquibase for versioned schema management.
 
+## Technologies Used:
 
-INSERT INTO roles(id, role)
-VALUES (1, 'ADMIN'),
-       (2, 'USER'),
-       (3, 'DEVELOPER');
+- **Backend Framework:** Java Spring Boot
+- **Frontend Technologies:** HTML, CSS, Thymeleaf
+- **Database:** MySQL
+- **Security:** Spring Security for authentication and authorization
+- **Design Patterns:** MVC for structured development
+- **Optimization:** Caching and performance tuning
 
-
-
-INSERT INTO users(username, email_address, first_name, last_name, password)
-VALUES ('Admin', 'admin@admin.com', 'Admin', 'Admin', '$2a$10$FVvZNPIIP3taMKdQqwwWsejbiH1DpT/0/PbBS933b73JewnHag6hK');
-
-INSERT INTO users_roles(users_id, roles_id) VALUES (1, 1);
-
-
-$2a$10$FVvZNPIIP3taMKdQqwwWsejbiH1DpT/0/PbBS933b73JewnHag6hK    is the BCrypt hash of password Admin!1234
-
-
+This application streamlines event management, offering a powerful and user-friendly platform for organizers to plan and track their events effectively.
 
